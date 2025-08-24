@@ -1,0 +1,19 @@
+# Dependencies
+aws-services-app/node_modules/
+
+# Build outputs
+aws-services-app/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Package manager
+aws-services-app/package-lock.json
