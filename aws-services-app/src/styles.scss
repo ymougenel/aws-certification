@@ -1,0 +1,165 @@
+/* Global styles for the AWS Services App */
+@import '~bootstrap/scss/bootstrap';
+
+:root {
+  --aws-orange: #ff9900;
+  --aws-dark-blue: #232f3e;
+  --aws-light-blue: #4b9cd3;
+  --aws-gray: #879196;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.aws-header {
+  background: linear-gradient(135deg, var(--aws-dark-blue) 0%, var(--aws-light-blue) 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.aws-card {
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  height: 100%;
+}
+
+.aws-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.aws-card .card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-height: 200px;
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: var(--aws-orange);
+  margin-bottom: 1rem;
+}
+
+.category-header {
+  color: var(--aws-dark-blue);
+  border-bottom: 3px solid var(--aws-orange);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.service-title {
+  color: var(--aws-dark-blue);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-description {
+  color: var(--aws-gray);
+  font-size: 0.9rem;
+}
+
+.back-button {
+  background-color: var(--aws-orange);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e68900;
+  transform: translateY(-2px);
+}
+
+.markdown-content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  color: var(--aws-dark-blue);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content h1 {
+  border-bottom: 2px solid var(--aws-orange);
+  padding-bottom: 0.5rem;
+}
+
+.markdown-content code {
+  background-color: #f1f3f4;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+.markdown-content pre {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .aws-card .card-body {
+    min-height: 150px;
+    padding: 1rem;
+  }
+  
+  .service-icon {
+    font-size: 2.5rem;
+  }
+  
+  .service-title {
+    font-size: 1.1rem;
+  }
+  
+  .service-description {
+    font-size: 0.85rem;
+  }
+  
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .category-header {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .aws-card .card-body {
+    min-height: 120px;
+    padding: 0.75rem;
+  }
+  
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .service-title {
+    font-size: 1rem;
+  }
+}
