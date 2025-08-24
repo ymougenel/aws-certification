@@ -16,4 +16,6 @@ Thumbs.db
 *.log
 
 # Package manager
-aws-services-app/package-lock.json
+aws-services-app/package-lock.jsonaws-services-app/.angular/
+aws_certification.iml
+aws-services-app/.angular/
