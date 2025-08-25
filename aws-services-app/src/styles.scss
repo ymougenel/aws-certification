@@ -1,5 +1,7 @@
 /* Global styles for the AWS Services App */
-@import 'node_modules/bootstrap/scss/bootstrap';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --aws-orange: #ff9900;
