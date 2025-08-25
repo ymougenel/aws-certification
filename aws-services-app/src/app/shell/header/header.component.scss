@@ -8,3 +8,19 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 400px) {
+  .aws-header h1 {
+    font-size: 1rem;
+  }
+  .aws-header p {
+    font-size: 0.8rem;
+  }
+
+  #github_project {
+    align-content: center;
+  }
+  #github_project i {
+    margin-right: 0rem !important;
+  }
+}
