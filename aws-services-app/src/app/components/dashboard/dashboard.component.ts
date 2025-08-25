@@ -8,30 +8,7 @@ import { ServiceCategory, AwsService } from '../../models/aws-service.model';
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="container mt-4">
-      <div class="row" *ngFor="let category of categories">
-        <div class="col-12">
-          <h2 class="category-header">
-            {{ category.name }}
-          </h2>
-        </div>
-        
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" 
-             *ngFor="let service of category.services">
-          <div class="card aws-card h-100" (click)="navigateToService(service.id)">
-            <div class="card-body">
-              <div class="service-icon">
-                <i [class]="service.icon"></i>
-              </div>
-              <h5 class="service-title">{{ service.name }}</h5>
-              <p class="service-description">{{ service.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './dashboard.component.html',
   styles: [`
     .container {
       max-width: 1200px;
