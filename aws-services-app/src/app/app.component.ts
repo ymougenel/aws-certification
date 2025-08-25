@@ -12,6 +12,7 @@ import { RouterOutlet } from '@angular/router';
           <i class="fab fa-aws me-3"></i>
           AWS Services Dashboard
         </h1>
+        
       </div>
     </div>
     <router-outlet></router-outlet>
