@@ -1,118 +1,98 @@
-# AWS Lambda
+# 📌 AWS Lambda – Revision Card
 
-AWS Lambda is a serverless computing service that lets you run code without provisioning or managing servers. You pay only for the compute time you consume—there's no charge when your code isn't running.
+## 📝 Introduction
+AWS Lambda is a **serverless compute service** that runs code without provisioning or managing servers.
 
-## Key Features
+### ✅ Key Principles
+1. **Event-driven execution** – Runs code in response to events (S3, API Gateway, DynamoDB, etc.).
+2. **Fully managed infrastructure** – No server management, scales automatically.
+3. **Pay-per-use** – Billed by execution time and resources consumed.
 
-### Serverless Architecture
-- No server management required
-- Automatic scaling based on demand
-- Built-in fault tolerance and high availability
+---
 
-### Event-Driven Execution
-- Triggered by various AWS services
-- HTTP requests via API Gateway
-- File uploads to S3, database changes, and more
+## 🚀 Advantages
+- **Serverless**: No servers to manage.
+- **On-demand execution**: Code runs only when scheduled or triggered.
+- **Automatic scaling**: Instantly scales with workload.
 
-### Multiple Runtime Support
-- Node.js, Python, Java, C#, Go, Ruby
-- Custom runtime API for other languages
-- Container image support
+---
 
-### Pay-per-Use Pricing
-- Charged only for requests and compute time
-- Free tier includes 1M requests per month
-- No charges for idle time
+## ⏳ Limits per Region
+- **Execution time**: Up to **15 minutes** per function.
+- **Memory allocation**: From **128 MB to 10 GB**.
+- **Concurrency executions**: Default **1,000+ concurrent executions** per account (can be increased).
+- **Notes**: Cold start issues may occur for some runtimes.
 
-## How Lambda Works
+---
 
-1. **Upload Code**: Package your function code and dependencies
-2. **Set Trigger**: Configure event source to invoke your function
-3. **Lambda Executes**: Service runs your code when triggered
-4. **Auto Scaling**: Lambda automatically scales to handle requests
+## ⚡ Features
+- **Lambda SnapStart**: Reduces cold start latency for Java functions by initializing and caching execution environments.
+- **Environment variables** for configuration.
+- **Layers** to share code across functions.
 
-## Event Sources
+---
 
-### API Gateway
-- HTTP/REST API requests
-- WebSocket connections
-- Perfect for web applications and APIs
+## 🌍 Lambda@Edge vs CloudFront Functions
+| Feature              | Lambda@Edge | CloudFront Functions |
+|----------------------|-------------|-----------------------|
+| Execution location   | Edge locations | Edge locations |
+| Runtime              | Node.js, Python | Lightweight JS only |
+| Max execution time   | ~5 seconds | <1 ms |
+| Use cases            | Complex request/response manipulation (auth, headers, rewrites) | Simple header manipulation, redirects, caching logic |
+| Cost                 | Higher | Lower |
 
-### S3 Events
-- Object creation, deletion, or modification
-- Automatic image processing, file validation
+---
 
-### DynamoDB Streams
-- Database record changes
-- Real-time data processing and analytics
+## 🔗 Lambda with VPC & Proxy
+- By default, Lambda runs **outside your VPC**.
+- To access **private resources (RDS, EC2, ElastiCache)** → attach Lambda to a VPC (requires ENIs, increases cold start time).
+- Can act as a **proxy** via API Gateway.
 
-### CloudWatch Events
-- Scheduled executions (cron jobs)
-- AWS service state changes
+---
 
-### SQS and SNS
-- Message queue processing
-- Notification handling
+## 📊 Integrations
+- **CloudWatch**:
+    - Logs function output automatically.
+    - Metrics on invocations, errors, duration, concurrency.
+- **CloudTrail**: Audit API calls.
+- **X-Ray**: Trace function performance.
 
-## Use Cases
+---
 
-### Real-time File Processing
-Process files immediately when uploaded to S3.
+## 💻 Compatible Runtimes
+- Supported languages: **Python, Node.js, Java, Go, Ruby, .NET, PowerShell**.
+- **Custom runtimes** supported via Runtime API.
+- **Lambda container images**: Deploy using Docker images (up to 10 GB).
 
-### Data Transformation
-Transform data as it moves between systems.
+---
 
-### Web APIs
-Build RESTful APIs without managing servers.
+## ❓ Exam Practice Quiz
 
-### Scheduled Tasks
-Run maintenance tasks, reports, or cleanup jobs.
+### 🔹 Multiple Choice
+**Q1.** Which of the following is a valid use case for Lambda SnapStart?  
+A. Reduce cold start for Java functions.  
+B. Speed up Node.js Lambda invocations.  
+C. Allow longer execution time.  
+D. Reduce Lambda costs by 50%.
 
-### IoT Backend
-Process sensor data and device telemetry.
+✅ **Answer: A**
 
-### Chat Bots
-Handle conversational interfaces and natural language processing.
+---
 
-## Best Practices
+**Q2.** What is the maximum execution time for a Lambda function?  
+A. 5 minutes  
+B. 10 minutes  
+C. 15 minutes  
+D. Unlimited
 
-### Function Design
-- Keep functions small and focused
-- Minimize cold start impact
-- Use environment variables for configuration
+✅ **Answer: C**
 
-### Performance Optimization
-- Optimize memory allocation
-- Reuse connections and objects
-- Minimize package size and dependencies
+---
 
-### Security
-- Follow principle of least privilege
-- Use IAM roles, not hardcoded credentials
-- Encrypt sensitive data
+**Q3.** Which service is best for **simple header manipulations** at CloudFront edge locations?  
+A. Lambda standard function  
+B. Lambda@Edge  
+C. CloudFront Functions  
+D. EC2 at edge
 
-### Monitoring and Debugging
-- Use CloudWatch Logs for debugging
-- Implement proper error handling
-- Monitor performance metrics
-
-## Limitations
-
-- **Execution Time**: Maximum 15 minutes per invocation
-- **Memory**: 128 MB to 10,240 MB
-- **Deployment Package**: 50 MB (zipped), 250 MB (unzipped)
-- **Concurrent Executions**: 1000 (can be increased)
-
-## Getting Started
-
-1. **Create Function**: Choose runtime and upload code
-2. **Set Permissions**: Configure IAM execution role
-3. **Add Trigger**: Connect to event source
-4. **Test**: Verify function works as expected
-5. **Monitor**: Use CloudWatch for monitoring and logs
-
-## Pricing
-
-- **Requests**: $0.20 per 1M requests
-- **Duration**: $0.0000166667 per GB-second
-- **Free Tier**: 1M requests and 400,000 GB-seconds per month
+✅ **Answer: C**

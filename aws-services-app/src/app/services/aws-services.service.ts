@@ -27,11 +27,11 @@ export class AwsServicesService {
     },
     {
       id: 'ecs',
-      name: 'Amazon ECS',
-      description: 'Run containerized applications',
+      name: 'Amazon Container',
+      description: 'ECS,Fargate, ECR & EKS',
       icon: 'fas fa-cube',
       category: 'Compute',
-      markdownFile: 'ecs.md'
+      markdownFile: 'container.md'
     },
 
     // Storage Services
