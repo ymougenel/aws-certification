@@ -1,23 +1,6 @@
-# AWS Concepts App
+# AWS Concepts - The App
 
-My AWS Certification Study, provides 
-* Comprehensive information about AWS services, 
-* Certification preparation materials, and 
-* Interactive quizzes.
-
-## Features
-
-- **Service Overview Cards**: Comprehensive information about AWS services like S3, Aurora, and Lambda
-
-[//]: # (- **Three-Tab Interface**:)
-
-[//]: # (   - Summary: Key features, use cases, and pricing)
-
-[//]: # (   - Architect Certification: Detailed technical information, best practices, and limitations)
-
-[//]: # (   - Quiz: Interactive 5-question quizzes to test your knowledge)
-- **Responsive Design**: Built with Tailwind CSS for modern, mobile-first design
-- **Interactive UI**: Modal dialogs, progress bars, and smooth transitions
+A modern Angular application with Tailwind CSS that provides comprehensive information about AWS services, certification preparation materials, and interactive quizzes.
 
 ## Project Structure
 
@@ -70,10 +53,4 @@ npm run build
 ```
 The build artifacts will be stored in the `dist/` directory.
 
-## License
-
-This project is licensed under the [MIT License](https://github.com/ymougenel/aws-certification#).
-
-## Author
-
-Created by ymougenel with love and AI (cursor) in 2025.
+l with love and AI (cursor) in 2025.
