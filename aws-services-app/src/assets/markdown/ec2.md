@@ -1,104 +1,133 @@
-# Amazon EC2 (Elastic Compute Cloud)
+# 📌 Amazon EC2 (Elastic Compute Cloud) – Revision Card
 
-Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster.
+## 📝 Introduction
+Amazon EC2 (Elastic Compute Cloud) provides **resizable compute capacity** in the AWS cloud.
 
-## Key Features
+### ✅ Key Principles
+1. **Virtual servers in the cloud** – Instances launched with chosen CPU, memory, and storage.
+2. **Scalable & elastic** – Easily scale up/down using Auto Scaling and Load Balancing.
+3. **Integrated with AWS ecosystem** – Works with EBS, IAM, VPC, CloudWatch, etc.
 
-### Flexible Instance Types
-- Choose from various instance families optimized for different use cases
-- General Purpose, Compute Optimized, Memory Optimized, Storage Optimized
-- Burstable performance instances for variable workloads
+---
 
-### Scalability
-- Auto Scaling to automatically adjust capacity
-- Elastic Load Balancing to distribute traffic
-- Scale up or down based on demand
+## 💻 Instance Types
+Different families optimized for specific workloads:
 
-### Security
-- Amazon VPC for network isolation
-- Security Groups as virtual firewalls
-- Key pairs for secure login
-- IAM integration for access control
+- **t (T3, T4g)** – Burstable general purpose (low-cost dev/test).
+- **m (M6i, M7g)** – General purpose (balanced CPU/Mem).
+- **c (C6g, C7i)** – Compute-optimized (high CPU).
+- **r (R6i)** – Memory-optimized (DBs, in-memory caches).
+- **i (I4i)** – Storage-optimized (high IOPS, NoSQL).
+- **g / p / inf** – GPU/ML/AI acceleration.
+- **x / z** – High memory for SAP HANA, analytics.
+- **d / h** – HDD-based, high storage throughput.
 
-### Storage Options
-- Amazon EBS for persistent block storage
-- Instance Store for temporary storage
-- EFS for shared file storage
-- S3 integration for object storage
+---
 
-## Instance Types
+## 💰 Purchasing Options
+- **On-Demand** – Pay per second/minute, no commitment. Best for short-term, unpredictable workloads.
+- **Reserved Instances (RI)** – Up to 72% discount for 1–3 year commitment.
+- **Savings Plans** – Flexible pricing commitment ($/hour over 1–3 years).
+- **Spot Instances** – Up to 90% discount, can be interrupted. Good for batch jobs, stateless apps.
+- **Dedicated Hosts / Dedicated Instances** – Physical server dedicated to a single customer (compliance/licensing).
+- **Capacity Reservations** – Reserve capacity in a specific AZ.
 
-### General Purpose (M, T, A series)
-- Balanced compute, memory, and networking
-- Ideal for web servers and small databases
+---
 
-### Compute Optimized (C series)
-- High-performance processors
-- Perfect for CPU-intensive applications
+## 🏗️ Placement Groups
+Control placement of EC2 instances within AWS infrastructure:
 
-### Memory Optimized (R, X, Z series)
-- Fast performance for memory-intensive workloads
-- In-memory databases and real-time analytics
+- **Cluster** – Instances close together in one AZ.  
+  → High throughput, low latency (HPC, big data).
+- **Spread** – Instances spread across racks, each with separate power/network.  
+  → High availability, resilience to hardware failures.
+- **Partition** – Instances divided into logical groups, each group isolated.  
+  → Useful for distributed systems like Hadoop, Cassandra.
 
-### Storage Optimized (I, D, H series)
-- High sequential read/write access
-- Distributed file systems and data processing
+---
 
-### Accelerated Computing (P, G, F series)
-- Hardware accelerators (GPUs, FPGAs)
-- Machine learning and high-performance computing
+## 🌐 ENI (Elastic Network Interfaces)
+- A **virtual network card** for EC2 instances.
+- Can attach multiple ENIs to an instance.
+- Each ENI has:
+    - Primary private IP address (mandatory).
+    - Secondary private IPs.
+    - One Elastic IP (optional).
+    - Security Groups.
+    - MAC address.
+- Useful for:
+    - High availability network solutions.
+    - Management and production networks separation.
+    - Network appliances with multiple interfaces.
 
-## Use Cases
+---
 
-### Web Applications
-Host web servers and application servers with auto-scaling capabilities.
+## ❓ Exam Practice Questions
 
-### Big Data Analytics
-Process large datasets with compute-optimized instances.
+### 🔹 Multiple Choice
+**Q1.** Which EC2 purchasing option provides the largest discount but can be interrupted at short notice?  
+A. On-Demand  
+B. Spot  
+C. Reserved  
+D. Savings Plan  
+✅ **Answer: B**
 
-### Machine Learning
-Train models using GPU-accelerated instances.
+---
 
-### Development and Testing
-Spin up development environments quickly and cost-effectively.
+**Q2.** You are running a Hadoop cluster. Which Placement Group type should you choose?  
+A. Cluster  
+B. Spread  
+C. Partition  
+D. Dedicated Host  
+✅ **Answer: C**
 
-## Pricing Models
+---
 
-### On-Demand
-- Pay by the hour or second
-- No long-term commitments
-- Ideal for unpredictable workloads
+**Q3.** Which of the following are valid EC2 instance families? (Select TWO)  
+A. t4g  
+B. d7s  
+C. r6i  
+D. p4x  
+✅ **Answer: A, C**
 
-### Reserved Instances
-- Significant discounts for 1 or 3-year terms
-- Capacity reservation in specific Availability Zone
-- Best for steady-state workloads
+---
 
-### Spot Instances
-- Up to 90% discount compared to On-Demand
-- Use spare EC2 capacity
-- Great for fault-tolerant applications
+**Q4.** An application requires **low latency and high throughput** between EC2 instances in the same AZ. Which placement group should you use?  
+A. Spread  
+B. Partition  
+C. Cluster  
+D. Multi-AZ  
+✅ **Answer: C**
 
-### Dedicated Hosts
-- Physical EC2 server dedicated for your use
-- Compliance and licensing requirements
-- Bring your own licenses
+---
 
-## Getting Started
+**Q5.** What is the main difference between Reserved Instances and Savings Plans?  
+A. Reserved Instances apply to compute and storage, while Savings Plans apply only to compute.  
+B. Reserved Instances apply to a specific instance type in a region, while Savings Plans are more flexible.  
+C. Reserved Instances are more expensive than On-Demand.  
+D. Savings Plans require dedicated hardware.  
+✅ **Answer: B**
 
-1. **Choose AMI**: Select an Amazon Machine Image
-2. **Select Instance Type**: Pick the right instance for your workload
-3. **Configure Instance**: Set up networking and storage
-4. **Add Storage**: Attach EBS volumes as needed
-5. **Configure Security**: Set up security groups and key pairs
-6. **Launch**: Start your instance and connect
+---
 
-## Best Practices
+### 🔹 True / False
+**Q6.** You can attach multiple ENIs to a single EC2 instance.  
+✅ True
 
-- Use Auto Scaling for dynamic workloads
-- Implement proper security group rules
-- Regular snapshots for backup
-- Monitor with CloudWatch
-- Use IAM roles instead of hardcoded credentials
-- Right-size your instances for cost optimization
-- Use placement groups for high-performance applications
+**Q7.** Spot instances are recommended for critical production workloads requiring guaranteed availability.  
+❌ False
+
+**Q8.** Spread placement groups allow only up to 7 instances per AZ.  
+✅ True
+
+**Q9.** A Dedicated Host gives visibility into physical sockets and cores.  
+✅ True
+
+**Q10.** EC2 instance store volumes persist even after stopping the instance.  
+❌ False (they are ephemeral).
+
+---
+
+✅ **Exam Tip:** Always pay attention to keywords in questions like **cost optimization, availability, high-performance computing, or compliance**. They often hint at the right purchasing option or placement strategy.
+
+
