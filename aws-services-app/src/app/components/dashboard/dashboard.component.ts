@@ -9,27 +9,7 @@ import { ServiceCategory, AwsService } from '../../models/aws-service.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './dashboard.component.html',
-  styles: [`
-    .container {
-      max-width: 1200px;
-    }
-    
-    .card {
-      transition: all 0.3s ease;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-    }
-  `]
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
   categories: ServiceCategory[] = [];

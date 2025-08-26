@@ -1,0 +1,39 @@
+.service-icon {
+    font-size: 4rem;
+    color: var(--aws-orange);
+}
+
+.card {
+    border-radius: 15px;
+}
+
+//TODO: FInd out why this is not applied (markdown generation related?)
+h2 {
+    font-size: 11.2rem;
+    font-weight: bold;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+}
+
+@media (max-width: 768px) {
+    .service-icon {
+        font-size: 3rem;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .d-flex .me-3 {
+        margin-right: 0 !important;
+        margin-bottom: 1rem;
+    }
+}
