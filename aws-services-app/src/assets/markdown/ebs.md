@@ -1,163 +1,125 @@
-# Amazon EBS (Elastic Block Store)
+# 💾 Amazon EBS & EFS – Revision Card
 
-Amazon Elastic Block Store (EBS) provides high-performance block storage volumes for use with Amazon EC2 instances. EBS volumes are highly available and reliable storage that can be attached to any running instance in the same Availability Zone.
+---
 
-## Volume Types
+## 📦 Amazon EBS (Elastic Block Store)
 
-### General Purpose SSD (gp3)
-- Latest generation general purpose SSD
-- Baseline performance of 3,000 IOPS
-- Provision up to 16,000 IOPS independently
-- Cost-effective for most workloads
+### 📝 Introduction
+EBS provides **block storage volumes** for EC2 instances. Persistent, network-attached, and highly available within an AZ.
 
-### General Purpose SSD (gp2)
-- Previous generation general purpose SSD
-- Baseline performance scales with volume size
-- Burstable to 3,000 IOPS for volumes under 1 TiB
-- Good balance of price and performance
+### ✅ Principles (3 Keypoints)
+1. **Persistent block storage** tied to an AZ.  
+2. **Durable and resizable volumes** (GP, IO1/IO2, ST1, SC1).  
+3. **Can be attached to EC2 instances** for OS, apps, or databases.  
 
-### Provisioned IOPS SSD (io2)
-- Highest performance SSD volume
-- Up to 64,000 IOPS per volume
-- 99.999% durability SLA
-- Critical business applications
+---
 
-### Provisioned IOPS SSD (io1)
-- High performance SSD for mission-critical workloads
-- Up to 64,000 IOPS per volume
-- 99.999% durability
-- Sub-millisecond latency
+### 📸 EBS Snapshot Features
+- Point-in-time copy of volumes, stored in **S3** (incremental).  
+- Snapshots can be used to:  
+  - Create new volumes.  
+  - Share across accounts.  
+  - Copy across Regions.  
+- Automated lifecycle with **Data Lifecycle Manager (DLM)**.  
 
-### Throughput Optimized HDD (st1)
-- Low-cost HDD for frequently accessed workloads
-- Throughput up to 500 MiB/s
-- Big data, data warehouses, log processing
-- Cannot be boot volume
+---
 
-### Cold HDD (sc1)
-- Lowest cost HDD for less frequently accessed data
-- Throughput up to 250 MiB/s
-- File servers, backup, archival storage
-- Cannot be boot volume
+### 💾 Storage Types
+- **General Purpose (gp2/gp3)** → Balanced price/performance, SSD.  
+- **Provisioned IOPS (io1/io2)** → High-performance SSD, low latency, critical DBs.  
+- **Throughput Optimized HDD (st1)** → Streaming, big data, data warehouses.  
+- **Cold HDD (sc1)** → Low-cost, infrequent access.  
 
-## Key Features
+---
 
-### High Availability
-- Automatically replicated within Availability Zone
-- Point-in-time snapshots to Amazon S3
-- 99.999% availability for io1 and io2 volumes
+### 🔗 EBS Multi-Attach
+- Supported for **io1/io2 volumes**.  
+- Allows attachment of the same volume to **multiple EC2 instances** (within same AZ).  
+- Use case: clustered applications (databases, file systems).  
 
-### Scalability
-- Modify volume size, type, and performance
-- No downtime for most modifications
-- Elastic Volumes feature for live changes
+---
 
-### Security
-- Encryption at rest using AWS KMS
-- Encryption in transit between EC2 and EBS
-- Access control through IAM policies
+### 🔐 EBS Encryption
+- Encryption at rest using **KMS**.  
+- Also supports **in-transit encryption**.  
+- Snapshots & volumes created from encrypted EBS are **encrypted by default**.  
 
-### Backup and Recovery
-- Point-in-time snapshots stored in S3
-- Incremental snapshots save costs
-- Cross-region snapshot copying
+---
 
-## Use Cases
+## 📷 Amazon Machine Image (AMI) Overview
+- Template for launching EC2 instances (OS + configuration).  
+- Can be **shared across accounts or Regions**.  
+- If AMI uses encrypted snapshots → requires KMS key sharing.  
 
-### Operating System Boot Volumes
-Primary storage for EC2 instance operating systems.
+---
 
-### Database Storage
-High-performance storage for transactional databases.
+## ⚡ EC2 Instance Store
 
-### File Systems
-Network attached storage for applications requiring shared access.
+### ✅ Principles (3 Keypoints)
+1. **Temporary block storage** physically attached to the host.  
+2. Very high performance, but **ephemeral** (lost when instance stops/terminates).  
+3. Ideal for **cache, buffer, temporary data**.  
 
-### Backup and Disaster Recovery
-Reliable backup storage with cross-region replication.
+---
 
-### Big Data Analytics
-High-throughput storage for data processing workloads.
+### 🔄 Comparison with EBS
+| Feature            | EBS                              | Instance Store                  |
+|--------------------|----------------------------------|---------------------------------|
+| Persistence        | Survives stop/start              | Lost when stopped/terminated    |
+| Performance        | High (depends on volume type)    | Very high (directly on host)    |
+| Use case           | Databases, OS, persistent data   | Cache, temp files, ephemeral    |
+| Backup             | Snapshots to S3 supported        | No snapshots                    |
+| AZ Scope           | Tied to a single AZ              | Tied to a specific EC2 instance |
 
-## Performance
+---
 
-### IOPS (Input/Output Operations Per Second)
-- Measure of read/write operations
-- Important for transactional workloads
-- Database applications, file servers
+## 📂 Amazon EFS (Elastic File System)
+- **Managed network file system (NFS)** for EC2, Lambda, and on-premises servers.  
+- **Multi-AZ, scalable, shared storage**.  
+- Use cases: **web apps, content management, data sharing**.  
 
-### Throughput (MiB/s)
-- Measure of data transfer rate
-- Important for sequential workloads
-- Big data processing, log analysis
+---
 
-### Latency
-- Time to complete I/O operation
-- Sub-millisecond for io1/io2 volumes
-- Critical for real-time applications
+## ❓ Exam Practice Quiz
 
-## Snapshots
+### 🔹 Multiple Choice
+**Q1.** Which EBS type should you use for a high-performance database with consistent low latency?  
+A. gp3  
+B. io1/io2  
+C. st1  
+D. sc1  
+✅ **Answer: B**
 
-### Point-in-Time Backup
-- Incremental backups to Amazon S3
-- First snapshot is full copy
-- Subsequent snapshots only store changed blocks
+---
 
-### Cross-Region Copy
-- Copy snapshots to other AWS regions
-- Disaster recovery and compliance
-- Share snapshots across accounts
+**Q2.** Which feature enables sharing EBS data across multiple EC2 instances?  
+A. Snapshots  
+B. Multi-Attach  
+C. Auto Scaling  
+D. Instance Store  
+✅ **Answer: B**
 
-### Fast Snapshot Restore
-- Instantly initialize volumes from snapshots
-- Eliminate performance penalty
-- Faster instance launch times
+---
 
-## Best Practices
+**Q3.** Which storage solution provides **shared access across multiple AZs**?  
+A. EBS  
+B. EFS  
+C. Instance Store  
+D. S3 Glacier  
+✅ **Answer: B**
 
-### Performance Optimization
-- Choose appropriate volume type for workload
-- Pre-warm volumes created from snapshots
-- Use multiple volumes for higher performance
+---
 
-### Cost Optimization
-- Right-size volumes based on actual usage
-- Use gp3 volumes for better price/performance
-- Delete unnecessary snapshots regularly
+### 🔹 True / False
+**Q4.** EBS Snapshots are stored in S3 and incremental.  
+✅ True  
 
-### Security
-- Enable encryption for sensitive data
-- Use IAM policies to control access
-- Monitor access with CloudTrail
+**Q5.** Instance Store data persists after instance stop/restart.  
+❌ False  
 
-### Backup Strategy
-- Regular automated snapshots
-- Test restore procedures
-- Implement cross-region backup for DR
+**Q6.** EBS encryption automatically encrypts snapshots derived from encrypted volumes.  
+✅ True  
 
-## Getting Started
+---
 
-1. **Create Volume**: Choose volume type and size
-2. **Attach to Instance**: Connect volume to EC2 instance
-3. **Format and Mount**: Prepare volume for use
-4. **Configure Backups**: Set up automated snapshots
-5. **Monitor Performance**: Use CloudWatch metrics
-
-## Monitoring
-
-### CloudWatch Metrics
-- VolumeReadOps, VolumeWriteOps
-- VolumeThroughputPercentage
-- VolumeQueueLength
-
-### Performance Insights
-- Monitor I/O patterns
-- Identify performance bottlenecks
-- Optimize volume configuration
-
-## Integration
-
-- **EC2**: Primary block storage for instances
-- **RDS**: Storage backend for database instances
-- **EMR**: Storage for big data processing
-- **CloudFormation**: Infrastructure as code deployment
+✅ **Exam Tip**: Distinguish **EBS (persistent, block), Instance Store (ephemeral, block), and EFS (shared, file system)**. Expect scenario-based questions about **durability vs performance vs cost**.
