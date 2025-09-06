@@ -120,6 +120,14 @@ export class AwsServicesService {
       icon: 'fas fa-user-shield',
       category: 'Security',
       markdownFile: 'cognito.md'
+    },
+    {
+      id: 'encryption_security',
+      name: 'Encryption & Security',
+      description: 'Encryption & Security',
+      icon: 'fas fa-key',
+      category: 'Security',
+      markdownFile: 'encryption_security.md'
     }
   ];
 
