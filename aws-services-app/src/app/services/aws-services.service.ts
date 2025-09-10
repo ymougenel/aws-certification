@@ -96,6 +96,14 @@ export class AwsServicesService {
       markdownFile: 'cloudfront.md'
     },
     {
+      id: 'load_balancing',
+      name: 'Amazon  Load Balancing',
+      description: 'Amazon  Load Balancing types',
+      icon: 'fas fa-diagram-project',
+      category: 'Networking',
+      markdownFile: 'load_balancing.md'
+    },
+    {
       id: 'vpc',
       name: 'Amazon VPC',
       description: 'Isolated cloud resources',
