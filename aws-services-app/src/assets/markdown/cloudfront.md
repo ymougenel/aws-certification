@@ -1,211 +1,118 @@
-# Amazon CloudFront
+# 🌍 Amazon CloudFront – Revision Card
 
-Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds.
+---
 
-## Key Features
+## ✅ Key Principles
+1. **CDN (Content Delivery Network)**: Delivers content closer to users via a global network of edge locations.  
+2. **Performance via caching**: Static and dynamic content cached at edge → lower latency.  
+3. **Security**: Integrated with **AWS Shield (DDoS protection)**, **WAF**, and **Field-level encryption**.  
 
-### Global Content Delivery
-- 400+ edge locations worldwide
-- Reduced latency for global users
-- Automatic routing to nearest edge location
+---
 
-### High Performance
-- Caching at edge locations
-- Optimized for AWS services
-- HTTP/2 and IPv6 support
+## 🏗 Origins
+- **S3 Bucket** → common for static websites, media.  
+- **Custom Origin (HTTP/HTTPS)** → on-premises servers or non-S3 AWS services.  
+- **ALB/EC2 in VPC** → used for dynamic web apps or APIs.  
 
-### Security
-- AWS Shield Standard included
-- Integration with AWS WAF
-- SSL/TLS encryption support
-- Signed URLs and cookies
+---
 
-### Cost Effective
-- Pay-as-you-go pricing
-- No minimum commitments
-- Regional edge caches for better economics
+## 🔁 CloudFront vs S3 Cross-Region Replication
+- **CloudFront**:  
+  - Focus on **performance**.  
+  - Content is cached globally at edge locations.  
+  - Ideal for **read-heavy, latency-sensitive apps**.  
+- **S3 CRR**:  
+  - Focus on **durability & compliance**.  
+  - Maintains **full copy of bucket** in another Region.  
+  - Use cases: **backup, compliance, disaster recovery**.  
 
-## How CloudFront Works
+👉 **Exam Tip**: Use **CloudFront for fast content delivery**, **CRR for cross-Region durability**.  
 
-1. **User Request**: User requests content from your website
-2. **Edge Location**: Request routed to nearest edge location
-3. **Cache Check**: CloudFront checks if content is cached
-4. **Origin Fetch**: If not cached, retrieves from origin server
-5. **Content Delivery**: Delivers content to user and caches at edge
+---
 
-## Origin Types
+## 🌍 Geo-Restriction
+- Control who can access content based on **geographic location**.  
+- Two modes:  
+  1. **Allowlist** → only selected countries.  
+  2. **Blocklist** → deny selected countries.  
 
-### S3 Bucket
-- Static website hosting
-- Media distribution
-- Software distribution
-- Automatic origin failover
+---
 
-### Custom Origin
-- EC2 instances
-- Elastic Load Balancer
-- Any HTTP server
-- On-premises servers
+## 💰 Price Classes
+- **Price Class All** → serve content from **all edge locations** worldwide.  
+- **Price Class Most** → exclude most expensive edge locations.  
+- **Price Class 100** → only the least expensive Regions (US, EU).  
 
-### Multiple Origins
-- Route different content types to different origins
-- Path-based routing
-- Failover between origins
+---
 
-## Caching Behavior
+## 🚀 Global Accelerator vs CloudFront
 
-### TTL (Time To Live)
-- Control how long content stays cached
-- Different TTLs for different content types
-- Minimum, maximum, and default TTL settings
+### 🌐 Global Accelerator – Key Principles
+- **Operates at Layer 4 (TCP/UDP)**.  
+- Provides **2 static anycast IP addresses**.  
+- Directs traffic to **closest healthy AWS endpoint** (via AWS backbone).  
+- Improves **availability and failover speed**.  
+- Ideal for **non-HTTP workloads** (VoIP, gaming, IoT, APIs).  
 
-### Cache Headers
-- Cache-Control and Expires headers
-- ETags for validation
-- Origin response caching directives
+### 🔄 Comparison
+| Feature            | CloudFront (CDN)         | Global Accelerator            |
+|--------------------|--------------------------|-------------------------------|
+| Layer              | L7 (HTTP/HTTPS)         | L4 (TCP/UDP)                  |
+| Focus              | Performance via caching | Global availability & routing |
+| Origins            | S3, ALB, EC2, custom    | ALB, NLB, EC2, EIP            |
+| Best for           | Web content, media, APIs| Latency-sensitive global apps |
+| Caching            | Yes                     | No                            |
+| IP addresses       | DNS-based               | Static Anycast IPs            |
 
-### Invalidation
-- Remove content from edge caches
-- Immediate content updates
-- Wildcard invalidations supported
+---
 
-## Security Features
+## ❓ Exam Practice Quiz
 
-### AWS Shield
-- DDoS protection included
-- Automatic attack detection and mitigation
-- 24/7 support for advanced protection
+### 🔹 Multiple Choice
+**Q1.** Which CloudFront feature helps block users from specific countries?  
+A. Shield  
+B. Geo-Restriction  
+C. WAF  
+D. Price Classes  
+✅ **Answer: B**
 
-### AWS WAF Integration
-- Web application firewall
-- SQL injection and XSS protection
-- Custom security rules
+---
 
-### SSL/TLS Support
-- Free SSL certificates with ACM
-- SNI custom SSL certificates
-- Dedicated IP custom SSL
+**Q2.** Which service gives **static IPs** and improves performance for TCP/UDP applications?  
+A. CloudFront  
+B. Global Accelerator  
+C. S3 CRR  
+D. ALB  
+✅ **Answer: B**
 
-### Access Control
-- Signed URLs for time-limited access
-- Signed cookies for multiple files
-- Origin Access Identity for S3
+---
 
-## Use Cases
+**Q3.** What is the main difference between **CloudFront** and **S3 Cross-Region Replication**?  
+A. CloudFront stores multiple copies permanently in each Region.  
+B. CloudFront focuses on caching & latency, CRR on durability & compliance.  
+C. Both provide DDoS protection.  
+D. CRR supports Geo-restriction.  
+✅ **Answer: B**
 
-### Website Acceleration
-Improve website performance by caching static content globally.
+---
 
-### Video Streaming
-Deliver video content with adaptive bitrate streaming.
+### 🔹 True / False
+**Q4.** CloudFront can use an ALB as an origin.  
+✅ True  
 
-### API Acceleration
-Speed up API responses by caching at edge locations.
+**Q5.** Global Accelerator caches static content at edge locations.  
+❌ False (it routes traffic, no caching).  
 
-### Software Distribution
-Distribute software updates and patches globally.
+**Q6.** Price Class 100 uses only the cheapest Regions (US & EU).  
+✅ True  
 
-### Security Enhancement
-Protect web applications from common attacks.
+---
 
-## Distribution Types
+✅ **Exam Tip**:  
+- **CloudFront = Caching + Content Delivery** (web, video, APIs).  
+- **Global Accelerator = Static IPs + Global TCP/UDP routing**.  
+- Expect questions mixing **performance vs disaster recovery vs security** scenarios.  
 
-### Web Distribution
-- General purpose content delivery
-- HTTP and HTTPS support
-- Real-time metrics and logging
-
-### RTMP Distribution
-- Adobe Flash Media Server protocol
-- Streaming media distribution
-- Being phased out in favor of HLS
-
-## Performance Optimization
-
-### Origin Shield
-- Additional caching layer
-- Reduce origin load
-- Improve cache hit ratio
-
-### Compression
-- Automatic GZIP compression
-- Reduce transfer sizes
-- Faster content delivery
-
-### HTTP/2 Support
-- Modern protocol benefits
-- Multiplexing and server push
-- Improved performance for modern browsers
-
-## Monitoring and Analytics
-
-### Real-time Metrics
-- Requests, data transfer, error rates
-- CloudWatch integration
-- Popular objects report
-
-### Access Logs
-- Detailed request information
-- Delivered to S3 bucket
-- Analyze user behavior and performance
-
-### Real-time Logs
-- Live request data
-- Delivered to Kinesis Data Streams
-- Immediate analysis and alerting
-
-## Pricing
-
-### Data Transfer Out
-- Varies by geographic region
-- Volume discounts available
-- Free tier includes 1TB per month
-
-### HTTP/HTTPS Requests
-- Per request pricing
-- Different rates for different regions
-- HTTPS requests slightly higher cost
-
-### Optional Features
-- Dedicated IP SSL certificates
-- Real-time logs
-- Origin Shield
-
-## Best Practices
-
-### Cache Optimization
-- Set appropriate TTL values
-- Use versioning for static assets
-- Implement cache-friendly URL structure
-
-### Security
-- Enable HTTPS everywhere
-- Use AWS WAF for application protection
-- Implement signed URLs for sensitive content
-
-### Performance
-- Optimize origin server response times
-- Use compression for text content
-- Monitor cache hit ratios
-
-### Cost Optimization
-- Analyze usage patterns
-- Use appropriate price class
-- Implement efficient invalidation strategies
-
-## Getting Started
-
-1. **Create Distribution**: Choose web or RTMP distribution
-2. **Configure Origin**: Set up origin server details
-3. **Configure Behaviors**: Set caching and security rules
-4. **Distribution Settings**: Configure SSL, logging, etc.
-5. **Deploy**: Distribution deploys to global edge network
-
-## Integration with AWS Services
-
-- **S3**: Origin for static content
-- **ELB**: Origin for dynamic content
-- **Route 53**: DNS integration
 - **ACM**: SSL certificate management
 - **WAF**: Web application firewall
 - **Lambda@Edge**: Custom logic at edge locations
