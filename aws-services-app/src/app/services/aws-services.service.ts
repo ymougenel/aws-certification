@@ -130,6 +130,14 @@ export class AwsServicesService {
       markdownFile: 'cognito.md'
     },
     {
+      id: 'audit_monitoring',
+      name: 'Audit & Monitoring',
+      description: 'AWS Audit & Monitoring',
+      icon: 'fas fa-cloud-meatball',
+      category: 'Security',
+      markdownFile: 'audit_monitoring.md'
+    },
+    {
       id: 'encryption_security',
       name: 'Encryption & Security',
       description: 'Encryption & Security',
