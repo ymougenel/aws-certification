@@ -111,7 +111,24 @@ export class AwsServicesService {
       category: 'Networking',
       markdownFile: 'vpc.md'
     },
-
+    // AI/Big DATA Services
+    {
+      id: 'AI',
+      name: 'Machine Learning',
+      description: 'AWS Machine Learning Services',
+      icon: 'fas fa-comment-nodes',
+      category: 'Data, AI & Analytics',
+      markdownFile: 'machine_learning.md'
+    },
+    //   // TODO
+    // {
+    //   id: 'athena',
+    //   name: 'Athena',
+    //   description: 'Identity management for your apps',
+    //   icon: 'fas fa-user-shield',
+    //   category: 'Security',
+    //   markdownFile: 'cognito.md'
+    // },
     // Security Services
     {
       id: 'iam',
