@@ -26,8 +26,8 @@ Using IAM, you can create and manage AWS users and groups, and use permissions t
     - **AWS managed policies** (predefined by AWS).
     - **Customer managed policies** (custom).
     - **Inline policies** (Embedded directly in user, group, or role).
-### Policy Structure
-** Effect **
+### 🔹 Policy Structure
+**Effect**
 * Allow or Deny
 * Explicit deny overrides allow
 
