@@ -129,6 +129,16 @@ export class AwsServicesService {
     //   category: 'Security',
     //   markdownFile: 'cognito.md'
     // },
+
+    // Messaging Services
+    {
+      id: 'Messaging',
+      name: 'Messaging Services',
+      description: 'Asynchronous AWS services (SQS, SNS, MQ)',
+      icon: 'fas fa-shuffle',
+      category: 'Messaging',
+      markdownFile: 'messaging.md'
+    },
     // Security Services
     {
       id: 'iam',
