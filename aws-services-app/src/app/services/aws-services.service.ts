@@ -147,6 +147,14 @@ export class AwsServicesService {
       category: 'Messaging',
       markdownFile: 'kinesis.md'
     },
+    {
+      id: 'kinesis data Fireohose',
+      name: 'Kinesis Data Firehose',
+      description: 'Amazon Kinesis Data Firehose',
+      icon: 'fas fa-arrows-turn-right',
+      category: 'Messaging',
+      markdownFile: 'kinesis_data_firehose.md'
+    },
     // Security Services
     {
       id: 'iam',
