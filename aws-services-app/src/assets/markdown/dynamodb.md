@@ -1,128 +1,122 @@
-# Amazon DynamoDB
+# ⚡ Amazon DynamoDB – Revision Card
 
-Amazon DynamoDB is a key-value and document database that delivers single-digit millisecond performance at any scale. It's a fully managed, multi-region, multi-active, durable database with built-in security, backup and restore, and in-memory caching.
+---
 
-## Key Features
+## 📝 DynamoDB Keypoints
+- **Fully managed NoSQL database** (key-value & document).
+- **Serverless**: automatic scaling, high availability, multi-AZ replication.
+- **Low-latency performance** at any scale (single-digit ms).
+- **Highly durable** (replicates data across multiple AZs).
+- Supports **fine-grained access control** with IAM.
 
-### Performance at Scale
-- Single-digit millisecond latency
-- Automatic scaling up to millions of requests per second
-- Global tables for multi-region deployment
+---
 
-### Fully Managed
-- No server provisioning or management
-- Automatic software patching
-- Built-in monitoring and alerting
+## ⚙️ DynamoDB Under the Hood
+- Data organized into **tables**.
+- Each table requires a **primary key**:
+    - **Partition key** (hash key).
+    - **Partition key + Sort key** (composite).
+- Supports **indexes**:
+    - **LSI (Local Secondary Index)** → same partition key, different sort key.
+    - **GSI (Global Secondary Index)** → different partition & sort key.
 
-### Security and Compliance
-- Encryption at rest and in transit
-- Fine-grained access control with IAM
-- VPC endpoints for secure access
-- HIPAA eligible and SOC compliant
+---
 
-### Flexible Data Model
-- Key-value and document data structures
-- Support for complex data types
-- Flexible schema design
+## 📑 Supported Data Types
+- **Scalar**: String, Number, Binary, Boolean, Null.
+- **Document**: JSON-like Map, List.
+- **Set**: String Set, Number Set, Binary Set.
+- Good for **evolving schemas** (schema-less, flexible attributes).
 
-## Core Concepts
+---
 
-### Tables, Items, and Attributes
-- **Table**: Collection of data
-- **Item**: Group of attributes (like a row)
-- **Attribute**: Fundamental data element (like a column)
+## ⚖️ Provisioned vs On-Demand Mode
+- **Provisioned mode (default)**:
+    - You define **RCU (Read Capacity Units)** & **WCU (Write Capacity Units)**.
+    - Can enable **Auto Scaling**.
+- **On-Demand mode**:
+    - No capacity planning required.
+    - Scales automatically with traffic.
+    - Pay-per-request (ideal for unpredictable workloads).
 
-### Primary Keys
-- **Partition Key**: Simple primary key
-- **Composite Key**: Partition key + sort key
-- Uniquely identifies each item in table
+---
 
-### Global Secondary Indexes (GSI)
-- Query data using different attributes
-- Different partition and sort keys than base table
-- Eventually consistent reads
+## 🚀 DynamoDB DAX (DynamoDB Accelerator)
+- **In-memory cache** for DynamoDB (similar to Redis).
+- Reduces **read latency** to microseconds.
+- Fully managed, highly available, secure (VPC integration).
+- Good for **read-heavy workloads**.
 
-### Local Secondary Indexes (LSI)
-- Alternative sort key for items with same partition key
-- Strongly consistent reads available
-- Must be created when table is created
+---
 
-## Capacity Modes
+## 🌍 DynamoDB Global Tables
+- **Multi-region replication** (active-active).
+- Provides **low-latency reads & writes** across regions.
+- Automatic conflict resolution (last write wins).
+- Great for **global applications**.
 
-### On-Demand
-- Pay-per-request pricing
-- Automatic scaling based on traffic
-- No capacity planning required
-- Great for unpredictable workloads
+---
 
-### Provisioned
-- Specify read and write capacity units
-- Auto Scaling available
-- More cost-effective for predictable traffic
-- Reserved capacity options available
+## ⏳ DynamoDB TTL (Time to Live)
+- Expiration timestamp attribute → items deleted automatically after expiry.
+- Helps reduce storage cost.
+- Common use case: **session management, temporary data**.
 
-## Data Types
+---
 
-### Scalar Types
-- String, Number, Binary, Boolean, Null
+## 💾 DynamoDB Backups
+- **On-Demand Backups**: full table snapshot at a point in time.
+- **Point-in-Time Recovery (PITR)**:
+    - Continuous backups.
+    - Recover table state to any point in the last **35 days**.
 
-### Document Types
-- List, Map (nested attributes)
+---
 
-### Set Types
-- String Set, Number Set, Binary Set
+## ❓ Exam Practice Quiz
 
-## Use Cases
+### 🔹 Multiple Choice
+**Q1.** Which DynamoDB feature reduces read latency with in-memory caching?  
+A. Global Tables  
+B. TTL  
+C. DAX  
+D. PITR  
+✅ **Answer: C**
 
-### Mobile Applications
-Store user profiles, game states, and application data.
+---
 
-### Web Applications
-Session management, shopping carts, user preferences.
+**Q2.** Which mode of DynamoDB is best for unpredictable workloads?  
+A. Provisioned  
+B. On-Demand  
+C. Auto Scaling  
+D. TTL  
+✅ **Answer: B**
 
-### Gaming
-Player data, game states, leaderboards.
+---
 
-### IoT Applications
-Sensor data, device status, time-series data.
+**Q3.** Which backup type allows recovery up to 35 days in the past?  
+A. On-Demand  
+B. PITR  
+C. LSI  
+D. GSI  
+✅ **Answer: B**
 
-### Real-time Analytics
-Clickstream data, metrics, and event tracking.
+---
 
-## Best Practices
+### 🔹 True / False
+**Q4.** DynamoDB is a regional service replicated across multiple AZs.  
+✅ True
 
-### Design for Scale
-- Distribute data evenly across partitions
-- Use composite primary keys when appropriate
-- Avoid hot partitions
+**Q5.** TTL deletes items automatically after expiry to save cost.  
+✅ True
 
-### Query Optimization
-- Use Query instead of Scan when possible
-- Implement pagination for large result sets
-- Use projection expressions to limit returned data
+**Q6.** Global Tables are only available in a single region.  
+❌ False (multi-region).
 
-### Cost Optimization
-- Choose appropriate capacity mode
-- Use DynamoDB Accelerator (DAX) for caching
-- Implement TTL for automatic item deletion
+---
 
-### Security
-- Use IAM roles and policies for access control
-- Enable encryption for sensitive data
-- Monitor access patterns with CloudTrail
-
-## Getting Started
-
-1. **Create Table**: Define table name and primary key
-2. **Choose Capacity**: Select on-demand or provisioned mode
-3. **Add Items**: Insert data into your table
-4. **Query Data**: Retrieve items using keys or indexes
-5. **Monitor**: Use CloudWatch for performance monitoring
-
-## Integration with AWS Services
-
-- **Lambda**: Trigger functions on data changes
-- **API Gateway**: Build REST APIs backed by DynamoDB
-- **S3**: Export/import data for analytics
-- **Kinesis**: Stream changes to other services
-- **CloudFormation**: Infrastructure as code deployment
+✅ **Exam Tip**:
+- **Provisioned = predictable traffic, On-Demand = unpredictable traffic.**
+- **DAX = cache for microsecond read latency.**
+- **TTL = auto-expire data.**
+- **PITR = 35-day continuous backup.**
+- **Global Tables = multi-region active-active replication.**  
