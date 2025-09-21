@@ -139,6 +139,14 @@ export class AwsServicesService {
       category: 'Messaging',
       markdownFile: 'messaging.md'
     },
+    {
+      id: 'kinesis',
+      name: 'Amazon Kinesis',
+      description: 'Amazon Kinesis description',
+      icon: 'fas fa-arrows-turn-right',
+      category: 'Messaging',
+      markdownFile: 'kinesis.md'
+    },
     // Security Services
     {
       id: 'iam',
