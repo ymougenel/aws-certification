@@ -24,3 +24,18 @@
     margin-right: 0rem !important;
   }
 }
+
+ul {
+  display: flex;
+  gap: 2em;
+}
+li {
+  font-size: 1.6em;
+  color: #f90;
+  font-weight: bold;
+  border: #f90;
+}
+
+li+li:before {
+  content: '| ';
+}
