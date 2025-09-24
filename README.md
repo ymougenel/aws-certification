@@ -1,5 +1,6 @@
 # AWS Concepts - [Website](https://aws.ymougenel.com)
 <a href="https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/saa-badge-resized.c6a0dd1191bf67ccfdd8b4873faffead406ccec7.png" alt="AWS associate certification"/>
+
 ## 📘 Overview
 This project provides a **comprehensive study companion** for the **AWS Certified Solutions Architect Associate (SAA-C03)** certification.  
 
