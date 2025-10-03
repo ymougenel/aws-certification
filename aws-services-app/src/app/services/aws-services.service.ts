@@ -105,8 +105,8 @@ export class AwsServicesService {
     },
     {
       id: 'vpc',
-      name: 'Amazon VPC',
-      description: 'Isolated cloud resources',
+      name: 'Amazon Routing',
+      description: 'VPC, Bastion, DX, NAT Gateway...',
       icon: 'fas fa-network-wired',
       category: 'Networking',
       markdownFile: 'vpc.md'
