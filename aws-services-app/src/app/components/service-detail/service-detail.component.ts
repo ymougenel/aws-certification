@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { AwsServicesService } from '../../services/aws-services.service';
 import { AwsService } from '../../models/aws-service.model';
@@ -8,7 +8,7 @@ import { marked } from 'marked';
 @Component({
   selector: 'app-service-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './service-detail.component.html',
   styleUrl: './service-detail.component.scss',
 })
