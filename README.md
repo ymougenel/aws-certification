@@ -42,8 +42,6 @@ This project is under the **[MIT License](https://github.com/ymougenel/aws-certi
 The **content of the AWS service cards** was **entirely generated with AI** during the preparation of the AWS Certified Solutions Architect Associate certification.  
 
 It is largely based on the excellent 👉 [Udemy course](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)  
- [Insert Udemy Course Link Here]  
-
 ---
 ## Author
-Created by ymougene, with ❤️ and AI
+Created by ymougenel, with ❤️ and AI
