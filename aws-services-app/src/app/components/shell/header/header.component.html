@@ -14,10 +14,15 @@
                 <p class="text-sm">Master AWS concepts with interactive learning</p>
             </div>
         </div>
-        <h1 class="mb-0 ml-auto" id="github_project">
-            <a href="https://github.com/ymougenel/aws-certification" alt="lien github">
-                <i class="fab fa-github fa-xl me-5"></i>
-            </a>
-        </h1>
+        <div class="flex items-center ml-auto">
+            <button (click)="themeService.toggleTheme()" class="theme-toggle-btn mr-4" [title]="themeService.isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+                <i [class]="themeService.isDark() ? 'fas fa-sun fa-xl' : 'fas fa-moon fa-xl'"></i>
+            </button>
+            <h1 class="mb-0" id="github_project">
+                <a href="https://github.com/ymougenel/aws-certification" alt="lien github">
+                    <i class="fab fa-github fa-xl"></i>
+                </a>
+            </h1>
+        </div>
     </div>
 </div>
