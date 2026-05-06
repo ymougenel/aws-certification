@@ -120,16 +120,14 @@ export class AwsServicesService {
       category: 'Data, AI & Analytics',
       markdownFile: 'machine_learning.md'
     },
-    //   // TODO
-    // {
-    //   id: 'athena',
-    //   name: 'Athena',
-    //   description: 'Identity management for your apps',
-    //   icon: 'fas fa-user-shield',
-    //   category: 'Security',
-    //   markdownFile: 'cognito.md'
-    // },
-
+    {
+      id: 'athena',
+      name: 'Amazon Athena',
+      description: 'Serverless interactive query service for S3',
+      icon: 'fas fa-database',
+      category: 'Data, AI & Analytics',
+      markdownFile: 'athena.md'
+    },
     // Messaging Services
     {
       id: 'Messaging',
