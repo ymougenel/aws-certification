@@ -43,5 +43,6 @@ The **content of the AWS service cards** was **entirely generated with AI** duri
 
 It is largely based on the excellent 👉 [Udemy course](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)  
 ---
-## Author
+## Authors
 Created by ymougenel, with ❤️ and AI
+👍 A big thank you to Julien-Fischer for adding valuable content and features to the project.
