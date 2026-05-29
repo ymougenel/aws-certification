@@ -10,7 +10,8 @@
     "test:watch": "ng test --watch",
     "test:coverage": "ng test --coverage",
     "test:ui": "ng test --ui",
-    "serve": "ng serve --host 0.0.0.0 --port 4200"
+    "serve": "ng serve --host 0.0.0.0 --port 4200",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "@testing-library/angular": "^19.2.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/marked": "^5.0.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.0.1",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.9.3",

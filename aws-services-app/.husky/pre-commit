@@ -1,0 +1,1 @@
+cd aws-services-app && npm run test
