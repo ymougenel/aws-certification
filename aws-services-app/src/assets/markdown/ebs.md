@@ -108,6 +108,13 @@ C. Instance Store
 D. S3 Glacier  
 ✅ **Answer: B**
 
+**Q4.** When you try to delete an EBS snapshot used by an AMI:
+A. The AMI is automatically deleted for you
+B. An error message appears
+C. The snapshot is removed from the console but the AMI can still use it under the hood
+D. The snapshot is deleted but the AMI may not be used for launching EC2 instances anymore
+✅ **Answer: B**
+
 ---
 
 ### 🔹 True / False
@@ -119,6 +126,12 @@ D. S3 Glacier
 
 **Q6.** EBS encryption automatically encrypts snapshots derived from encrypted volumes.  
 ✅ True  
+
+**Q7.** Creating an AMI from an EC2 instance requires you to first create an EBS snapshot.
+❌ False (The EBS snapshot is automatically created for you when you create an AMI from an EC2 instance)
+
+**Q8.** EBS Snapshots created by the creation of an AMI are not visible in the AWS console.
+❌ False (They are listed along with the other snapshots under "EC2 > Volumes > Snapshots")
 
 ---
 
